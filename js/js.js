@@ -10,9 +10,13 @@ let user = {
 let game = {
     settings,
     user,
-    inputEnter(){
-        let numCells =document.querySelector('#number').value;
-        console.log(numCells);
+    inputEnter(event){
+        if(event.keyCode === 13) {
+            event.preventDefault();
+            let numCells = document.querySelector('#number');
+            console.log(typeof numCells);
+            numCells.value=Number(numCells.value)+10;
+        }
     },
 run(){
         this.settings.input.addEventListener('keydown', this.inputEnter);
